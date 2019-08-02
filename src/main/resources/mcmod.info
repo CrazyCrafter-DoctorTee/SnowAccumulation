@@ -1,0 +1,10 @@
+[{
+  "modid": "snowaccumulation",
+  "name": "Snow Accumulation",
+  "description": "Makes snowfall accumulate",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "logoFile": "assets/snowaccumulation/textures/logo.png",
+  "authorList": ["Crazy Crafter"],
+  "credits": "Forge made this possible"
+}]
