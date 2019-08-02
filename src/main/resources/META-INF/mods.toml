@@ -1,0 +1,12 @@
+modLoader="javafml" #mandatory
+loaderVersion="[25,)" #mandatory
+[[mods]] #mandatory
+modId="snowaccumulation" #mandatory
+version="${file.jarVersion}" #mandatory
+displayName="Snow Accumulation" #mandatory
+logoFile="assets/snowaccumulation/textures/logo.png" #optional
+authors="Crazy Crafter" #optional
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Makes snow accumulate
+'''
