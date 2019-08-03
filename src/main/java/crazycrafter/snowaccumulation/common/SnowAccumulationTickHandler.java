@@ -1,14 +1,13 @@
 package crazycrafter.snowaccumulation.common;
 
-import java.util.Iterator;
 import java.util.Random;
 
-import net.minecraft.block.BlockSnowLayer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Blocks;
+import net.minecraft.block.BlockSnowLayer;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.EnumLightType;
 import net.minecraft.world.WorldServer;
+import net.minecraft.world.EnumLightType;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.gen.Heightmap;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -27,15 +26,12 @@ public class SnowAccumulationTickHandler {
 	    if(e.world instanceof WorldServer)
 	    {
 	    	WorldServer worldserver = (WorldServer) e.world;
-	    	//Debug profiling for performance
-	    	worldserver.profiler.startSection("AccumulationTick");
 	    	if(worldserver.isRaining())
 	    	{	
-	    		for (Iterator<Chunk> iterator = worldserver.getPlayerChunkMap().getChunkIterator(); iterator.hasNext();)
+	    		for (Chunk chunk : worldserver.getChunkProvider().getLoadedChunks())
 	    		{
-	    			Chunk chunk = iterator.next();
-	    			int chunk_min_x = chunk.x * 16;
-	    			int chunk_min_y = chunk.z * 16;
+	    			int chunk_min_x = chunk.getPos().getXStart();
+	    			int chunk_min_y = chunk.getPos().getZStart();
 	    			//If it can rain here, there is a 1/16 chance of trying to add snow
 	    			if (worldserver.dimension.canDoRainSnowIce(chunk) && worldserver.rand.nextInt(16) == 0 )
 	    			{
@@ -60,28 +56,28 @@ public class SnowAccumulationTickHandler {
 	    			    		if(north.getBlock() instanceof BlockSnowLayer)
 	    			    		{
 	    			    			surroundings += north.get(BlockSnowLayer.LAYERS);
-	    			    		}else if(north.isFullCube())
+	    			    		}else if(north.isSolid())
 	    			    		{
 	    			    			surroundings += 8;
 	    			    		}
 	    			    		if(south.getBlock() instanceof BlockSnowLayer)
 	    			   			{
 	    			   				surroundings += south.get(BlockSnowLayer.LAYERS);
-	    			   			}else if(south.isFullCube())
+	    			   			}else if(south.isSolid())
 	    			   			{
 	    		    				surroundings += 8;
 	    		    			}
 	    		    			if(east.getBlock() instanceof BlockSnowLayer)
 	    		    			{
 	    		    				surroundings += east.get(BlockSnowLayer.LAYERS);
-	    		    			}else if(east.isFullCube())
+	    		    			}else if(east.isSolid())
 	    		    			{
 	    		    				surroundings += 8;
 	    		    			}
 	    		    			if(west.getBlock() instanceof BlockSnowLayer)
 	    		    			{
 	    		    				surroundings += west.get(BlockSnowLayer.LAYERS);
-	    		    			}else if(west.isFullCube())
+	    		    			}else if(west.isSolid())
 	    		    			{
 	    		    				surroundings += 8;
 	    		    			}
@@ -100,8 +96,7 @@ public class SnowAccumulationTickHandler {
 	   			    	}
 	   			    }
 	   			}
-	   		}
-	    	worldserver.profiler.endSection();
+	    	}
 	    }
 	}
 }
