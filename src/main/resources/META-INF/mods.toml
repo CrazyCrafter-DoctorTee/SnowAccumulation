@@ -1,8 +1,8 @@
 modLoader="javafml" #mandatory
-loaderVersion="[25,)" #mandatory
+loaderVersion="[28,)" #mandatory
 [[mods]] #mandatory
 modId="snowaccumulation" #mandatory
-version="${file.jarVersion}" #mandatory
+version="1.1" #mandatory
 displayName="Snow Accumulation" #mandatory
 logoFile="assets/snowaccumulation/textures/logo.png" #optional
 authors="Crazy Crafter" #optional
