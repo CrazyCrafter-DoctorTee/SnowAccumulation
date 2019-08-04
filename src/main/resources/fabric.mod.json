@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "snowaccumulation",
+  "version": "${version}",
+
+  "name": "Snow Accumulation",
+  "description": "Makes snowfall accumulate",
+  "authors": [
+    "Crazy Crafter"
+  ],
+  "contact": {
+    "sources": "https://github.com/CrazyCrafter-DoctorTee/SnowAccumulation"
+  },
+
+  "license": "MIT",
+  "icon": "assets/snowaccumulation/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "crazycrafter.snowaccumulation.SnowAccumulation"
+    ]
+  },
+  "mixins": [
+    "snowaccumulation.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  },
+  "suggests": {
+    "flamingo": "*"
+  }
+}
