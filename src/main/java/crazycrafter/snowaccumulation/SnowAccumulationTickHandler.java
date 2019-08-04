@@ -14,15 +14,16 @@ import net.minecraft.block.SnowBlock;
 import net.minecraft.server.world.ChunkHolder;
 import net.minecraft.server.world.ServerChunkManager;
 import net.minecraft.server.world.ServerWorld;
-import net.minecraft.server.world.ThreadedAnvilChunkStorage;
 import net.minecraft.util.math.BlockPos;
 
 public class SnowAccumulationTickHandler implements WorldTickCallback{
 
 	int randLCG;
+	Method getChunkHolder;
 	
-	public SnowAccumulationTickHandler(){
+	public SnowAccumulationTickHandler(Method chunkHolderIn){
 		randLCG = (new Random()).nextInt();
+		getChunkHolder = chunkHolderIn;
 	}
 	
 	@Override
@@ -34,20 +35,9 @@ public class SnowAccumulationTickHandler implements WorldTickCallback{
 	    	{	
 	    		try
 	    		{	
-	    			Method getChunkHolderIterator;
-	    			try{
-	    				getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getDeclaredMethod("f");
-	    			} catch (NoSuchMethodException ex1) {
-	    				try
-	    				{
-	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getDeclaredMethod("method_17264");
-	    				} catch (NoSuchMethodException ex2) {
-	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getDeclaredMethod("entryIterator");
-	    				}
-	    			}
-	    			getChunkHolderIterator.setAccessible(true);
+	    			getChunkHolder.setAccessible(true);
 	    			@SuppressWarnings("unchecked")
-	    			Iterable<ChunkHolder> chunkSet = (Iterable<ChunkHolder>) getChunkHolderIterator.invoke(((ServerChunkManager)worldserver.getChunkManager()).threadedAnvilChunkStorage);
+	    			Iterable<ChunkHolder> chunkSet = (Iterable<ChunkHolder>) getChunkHolder.invoke(((ServerChunkManager)worldserver.getChunkManager()).threadedAnvilChunkStorage);
 	    			for ( ChunkHolder holder : chunkSet)
 		    		{
 	    				Chunk chunk = holder.getCompletedChunk();
