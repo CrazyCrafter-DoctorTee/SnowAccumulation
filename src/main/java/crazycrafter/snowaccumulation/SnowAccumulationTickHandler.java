@@ -33,8 +33,19 @@ public class SnowAccumulationTickHandler implements WorldTickCallback{
 	    	if(worldserver.isRaining())
 	    	{	
 	    		try
-	    		{
-	    			Method getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getMethod("entryIterator");
+	    		{	
+	    			Method getChunkHolderIterator;
+	    			try{
+	    				getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getMethod("f");
+	    			} catch (NoSuchMethodException ex1) {
+	    				try
+	    				{
+	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getMethod("method_17264");
+	    				} catch (NoSuchMethodException ex2) {
+	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getMethod("entryIterator");
+	    				}
+	    			}
+	    			
 	    			getChunkHolderIterator.setAccessible(true);
 	    			@SuppressWarnings("unchecked")
 	    			Iterable<ChunkHolder> chunkSet = (Iterable<ChunkHolder>) getChunkHolderIterator.invoke(((ServerChunkManager)worldserver.getChunkManager()).threadedAnvilChunkStorage);
