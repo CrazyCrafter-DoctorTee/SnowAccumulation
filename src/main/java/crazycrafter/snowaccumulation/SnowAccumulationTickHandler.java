@@ -36,13 +36,13 @@ public class SnowAccumulationTickHandler implements WorldTickCallback{
 	    		{	
 	    			Method getChunkHolderIterator;
 	    			try{
-	    				getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getMethod("f");
+	    				getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getDeclaredMethod("f");
 	    			} catch (NoSuchMethodException ex1) {
 	    				try
 	    				{
-	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getMethod("method_17264");
+	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getDeclaredMethod("method_17264");
 	    				} catch (NoSuchMethodException ex2) {
-	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getMethod("entryIterator");
+	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getDeclaredMethod("entryIterator");
 	    				}
 	    			}
 	    			getChunkHolderIterator.setAccessible(true);
