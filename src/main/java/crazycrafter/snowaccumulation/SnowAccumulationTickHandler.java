@@ -45,7 +45,6 @@ public class SnowAccumulationTickHandler implements WorldTickCallback{
 	    					getChunkHolderIterator = (ThreadedAnvilChunkStorage.class).getMethod("entryIterator");
 	    				}
 	    			}
-	    			
 	    			getChunkHolderIterator.setAccessible(true);
 	    			@SuppressWarnings("unchecked")
 	    			Iterable<ChunkHolder> chunkSet = (Iterable<ChunkHolder>) getChunkHolderIterator.invoke(((ServerChunkManager)worldserver.getChunkManager()).threadedAnvilChunkStorage);
@@ -125,6 +124,7 @@ public class SnowAccumulationTickHandler implements WorldTickCallback{
 	    		} catch (Exception ex) {
 	    			System.out.println("COULD NOT ACCESS LOADED CHUNKS!");
 	    			System.out.println(ex.getMessage());
+	    			ex.printStackTrace();
 	    		}
 	    	}
 		}
