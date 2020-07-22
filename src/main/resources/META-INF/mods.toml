@@ -1,12 +1,23 @@
-modLoader="javafml" #mandatory
-loaderVersion="[28,)" #mandatory
-[[mods]] #mandatory
-modId="snowaccumulation" #mandatory
-version="1.1" #mandatory
-displayName="Snow Accumulation" #mandatory
-logoFile="assets/snowaccumulation/textures/logo.png" #optional
-authors="Crazy Crafter" #optional
-# The description text for the mod (multi line!) (#mandatory)
-description='''
-Makes snow accumulate
-'''
+modLoader="javafml"
+loaderVersion="[31,)"
+issueTrackerURL="https://github.com/CrazyCrafter-DoctorTee/SnowAccumulation/issues"
+[[mods]]
+modId="snowaccumulation"
+version="0.1"
+displayName="Snow Accumulation"
+logoFile="logo.png"
+displayURL="https://www.curseforge.com/minecraft/mc-mods/snow-accumulation"
+authors="Crazy Crafter, ported by Grimmauld"
+description='''Makes snow accumulate'''
+[[dependencies.snowaccumulation]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[31,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.snowaccumulation]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.15.2]" #keep updated
+    ordering="NONE"
+    side="BOTH" 
