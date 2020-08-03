@@ -4,7 +4,10 @@
 build/
 out/
 classes/
-gradle*
+
+# eclipse
+
+*.launch
 
 # idea
 
@@ -12,10 +15,6 @@ gradle*
 *.iml
 *.ipr
 *.iws
-
-# eclipse
-
-*.launch
 
 # vscode
 

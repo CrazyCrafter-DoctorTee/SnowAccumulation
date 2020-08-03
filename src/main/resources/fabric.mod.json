@@ -21,9 +21,6 @@
       "crazycrafter.snowaccumulation.SnowAccumulation"
     ]
   },
-  "mixins": [
-    "snowaccumulation.mixins.json"
-  ],
 
   "depends": {
     "fabricloader": ">=0.4.0",
