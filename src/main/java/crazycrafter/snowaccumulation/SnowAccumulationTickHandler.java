@@ -71,28 +71,28 @@ public class SnowAccumulationTickHandler implements WorldTickCallback{
 		    			    		if(north.getBlock() instanceof SnowBlock)
 		    			    		{
 		    			    			surroundings += north.get(SnowBlock.LAYERS);
-		    			    		}else if(north.isSimpleFullBlock(chunk, pos1.north()))
+		    			    		}else if(north.isFullCube(chunk, pos1.north()))
 		    			    		{
 		    			    			surroundings += 8;
 		    			    		}
 		    			    		if(south.getBlock() instanceof SnowBlock)
 		    			   			{
 		    			   				surroundings += south.get(SnowBlock.LAYERS);
-		    			   			}else if(south.isSimpleFullBlock(chunk, pos1.south()))
+		    			   			}else if(south.isFullCube(chunk, pos1.south()))
 		    			   			{
 		    		    				surroundings += 8;
 		    		    			}
 		    		    			if(east.getBlock() instanceof SnowBlock)
 		    		    			{
 		    		    				surroundings += east.get(SnowBlock.LAYERS);
-		    		    			}else if(east.isSimpleFullBlock(chunk, pos1.east()))
+		    		    			}else if(east.isFullCube(chunk, pos1.east()))
 		    		    			{
 		    		    				surroundings += 8;
 		    		    			}
 		    		    			if(west.getBlock() instanceof SnowBlock)
 		    		    			{
 		    		    				surroundings += west.get(SnowBlock.LAYERS);
-		    		    			}else if(west.isSimpleFullBlock(chunk, pos1.west()))
+		    		    			}else if(west.isFullCube(chunk, pos1.west()))
 		    		    			{
 		    		    				surroundings += 8;
 		    		    			}
